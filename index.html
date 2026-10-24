@@ -71,6 +71,15 @@
       --font-head: "Unbounded", "Arial Black", sans-serif;
       --font-body: "Manrope", "Segoe UI", Arial, sans-serif;
       --brand-line: linear-gradient(90deg, var(--navy), var(--accent) 55%, var(--sky));
+      /* Единый «переливающийся» стиль: все плашки, кнопки и иконки — на градиентах, без плоских заливок */
+      --grad-blue: linear-gradient(135deg, var(--accent) 0%, #1c86cb 100%);        /* кнопки, номера шагов */
+      --grad-blue-hover: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+      --grad-icon: linear-gradient(135deg, var(--accent) 0%, var(--sky) 100%);      /* круглые иконки */
+      --grad-navy: linear-gradient(150deg, #0d4a82 0%, var(--navy) 55%, #062a4b 100%); /* тёмные блоки и плашки */
+      --grad-soft: linear-gradient(135deg, #f1f8fe 0%, #d7ebfa 100%);               /* светло-голубые плашки */
+      --grad-soft-hover: linear-gradient(135deg, #e4f1fb 0%, #c6e1f7 100%);
+      --grad-paper: linear-gradient(160deg, #ffffff 0%, #eef5fc 100%);              /* белые карточки */
+      --grad-glass: linear-gradient(135deg, rgba(127, 195, 240, .24) 0%, rgba(127, 195, 240, .06) 100%); /* плашки на тёмном фоне */
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -117,13 +126,13 @@
     }
     .btn:hover { transform: translateY(-2px); }
     .btn svg { flex: none; }
-    .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
-    .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .btn-primary { background: var(--grad-blue); border-color: var(--accent); color: var(--paper); }
+    .btn-primary:hover { background: var(--grad-blue-hover); border-color: var(--accent-dark); }
     .btn-ghost { background: transparent; color: var(--navy); }
 
     .section { padding: 88px 0; }
     .section-alt { background: var(--mist); }
-    .section-dark { background: var(--navy); color: var(--paper); }
+    .section-dark { background: var(--grad-navy); color: var(--paper); }
     .section-head { max-width: 680px; margin-bottom: 44px; }
     .section-head p { color: var(--muted); font-size: 1.05rem; }
     .section-dark .section-head p, .section-dark .lead-dark { color: var(--muted-dark); }
@@ -167,20 +176,20 @@
     .nav a {
       display: block; padding: 8px 14px; border-radius: 10px;
       text-decoration: none; font-weight: 700; font-size: .95rem; white-space: nowrap; color: var(--navy);
-      background: var(--mist); border: 1px solid #cddff0;
+      background: var(--grad-soft); border: 1px solid #cddff0;
       transition: background-color .2s ease, color .2s ease, border-color .2s ease;
     }
-    .nav a:hover { background: var(--accent-soft); border-color: var(--accent); }
+    .nav a:hover { background: var(--grad-soft-hover); border-color: var(--accent); }
     /* Текущий раздел: aria-current ставит скрипт в конце страницы */
-    .nav a[aria-current] { background: var(--accent-soft); color: var(--accent-dark); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+    .nav a[aria-current] { background: var(--grad-soft-hover); color: var(--accent-dark); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
     /* «Связаться» — главная кнопка шапки: крупнее, с иконкой и тенью, чтобы выделяться на фоне плашек меню */
     .header-cta {
       gap: 8px; min-height: 46px; padding: 10px 22px; font-size: 1rem; font-weight: 800;
-      background: var(--accent); border-color: var(--accent); color: var(--paper);
+      background: var(--grad-blue); border-color: var(--accent); color: var(--paper);
       box-shadow: 0 6px 18px rgba(20, 111, 176, .38);
     }
     .header-cta svg { flex: none; }
-    .header-cta:hover { background: var(--accent-dark); border-color: var(--accent-dark); box-shadow: 0 8px 22px rgba(20, 111, 176, .45); }
+    .header-cta:hover { background: var(--grad-blue-hover); border-color: var(--accent-dark); box-shadow: 0 8px 22px rgba(20, 111, 176, .45); }
 
     /* ===== Первый экран ===== */
     /* Тёмно-синий первый экран; на нём акцент — голубой --sky */
@@ -193,13 +202,13 @@
     .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
     .hero-grid > * { min-width: 0; }
     .hero h1 { font-size: clamp(1.6rem, 4.4vw, 3.1rem); margin-bottom: .45em; hyphens: auto; color: var(--paper); }
-    .hero h1 span { background: linear-gradient(transparent 62%, rgba(49, 184, 230, .45) 62%); }
+    .hero h1 span { background: linear-gradient(transparent 62%, rgba(28, 134, 203, .7) 62%); }
     .hero .eyebrow { color: var(--sky); }
     .hero :focus-visible { outline-color: var(--sky); }
     .hero-lead { font-size: 1.15rem; color: var(--muted-dark); max-width: 540px; margin-bottom: 32px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-    .hero .btn-primary { background: var(--sky); border-color: var(--sky); color: var(--navy); }
-    .hero .btn-primary:hover { background: #5cc8ee; border-color: #5cc8ee; }
+    .hero .btn-primary { background: var(--grad-blue); border-color: #1c86cb; color: var(--paper); box-shadow: 0 10px 24px rgba(2, 18, 36, .35); }
+    .hero .btn-primary:hover { background: var(--grad-blue-hover); border-color: var(--accent); }
     .hero .btn-ghost { color: var(--paper); border-color: rgba(255, 255, 255, .7); }
     .hero .btn-ghost:hover { border-color: var(--paper); background: rgba(255, 255, 255, .08); }
     .hero-stats {
@@ -228,15 +237,11 @@
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .cards-4 { grid-template-columns: repeat(4, 1fr); }
     .card {
-      background: var(--paper); border: 1px solid var(--line);
+      background: var(--grad-paper); border: 1px solid var(--line);
       border-radius: var(--radius); padding: 26px 24px;
     }
     .card p { color: var(--muted); margin: 0; }
-    .card-icon {
-      width: 48px; height: 48px; border-radius: 12px; margin-bottom: 18px;
-      background: var(--mist); display: grid; place-items: center;
-    }
-    .card-accent { background: var(--accent-soft); border-color: #c4def4; }
+    .card-accent { background: var(--grad-soft); border-color: #c4def4; }
 
     /* ===== Преимущества: слева акцент «3 года гарантии», справа список без плашек ===== */
     .adv-layout { display: grid; grid-template-columns: minmax(260px, .8fr) 2fr; gap: 48px; align-items: stretch; }
@@ -252,10 +257,10 @@
     .adv-feature::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--brand-line); }
     .adv-feature-icon {
       position: absolute; top: 32px; left: 32px;
-      width: 56px; height: 56px; border-radius: 16px;
-      display: grid; place-items: center; background: rgba(255, 255, 255, .1);
+      width: 56px; height: 56px; border-radius: 50%;
+      display: grid; place-items: center; background: var(--grad-icon); box-shadow: 0 6px 16px rgba(2, 18, 36, .35);
     }
-    .adv-feature-icon svg { stroke: var(--sky); width: 30px; height: 30px; }
+    .adv-feature-icon svg { stroke: var(--paper); width: 30px; height: 30px; }
     .adv-feature-value { margin: 96px 0 6px; font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: var(--sky); line-height: 1; }
     .adv-feature-value strong { font-size: 5.5rem; margin-right: 6px; }
     .adv-feature h3 { color: var(--paper); font-size: 1.25rem; }
@@ -271,7 +276,7 @@
     .adv-icon {
       width: 52px; height: 52px; border-radius: 50%;
       display: grid; place-items: center;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--sky) 100%);
+      background: var(--grad-icon);
       box-shadow: 0 6px 14px rgba(20, 111, 176, .25);
     }
     .adv-icon svg { stroke: var(--paper); }
@@ -284,13 +289,13 @@
     .reason {
       position: relative; padding: 28px 28px 28px 100px;
       border: 1px solid rgba(127, 195, 240, .35); border-radius: var(--radius);
-      background: rgba(127, 195, 240, .12);
+      background: var(--grad-glass);
     }
     .reason-icon {
       position: absolute; left: 26px; top: 26px;
       width: 52px; height: 52px; border-radius: 50%;
       display: grid; place-items: center; color: var(--paper);
-      background: linear-gradient(135deg, var(--accent) 0%, var(--sky) 100%);
+      background: var(--grad-icon);
       box-shadow: 0 6px 16px rgba(2, 18, 36, .35);
     }
     .reason p { color: var(--muted-dark); margin: 0; }
@@ -303,12 +308,12 @@
     .chips li {
       display: flex; align-items: center; gap: 10px;
       padding: 14px 22px; border-radius: 999px;
-      background: var(--navy); border: 1px solid var(--navy);
+      background: var(--grad-navy); border: 1px solid var(--navy);
       font-weight: 700; font-size: 1.05rem; color: var(--paper);
     }
     .chips svg { stroke: var(--sky); }
     .note-box {
-      background: var(--navy); color: var(--muted-dark); border-left: 6px solid var(--sky);
+      background: var(--grad-navy); color: var(--muted-dark); border-left: 6px solid var(--sky);
       border-radius: 0 var(--radius) var(--radius) 0; padding: 22px 24px;
     }
     .note-box strong { color: var(--paper); }
@@ -319,7 +324,7 @@
     .about-grid > * { min-width: 0; }
     .about-fit {
       margin-top: 8px; padding: 20px 24px; border-radius: var(--radius);
-      background: var(--navy); color: var(--muted-dark); border-left: 6px solid var(--sky);
+      background: var(--grad-navy); color: var(--muted-dark); border-left: 6px solid var(--sky);
     }
     .about-fit strong { color: var(--paper); }
     .about-fit p { margin: 0; }
@@ -345,7 +350,7 @@
     .price-main {
       display: grid; grid-template-columns: 1fr auto; gap: 24px 40px; align-items: center;
       padding: 36px 40px; margin-bottom: 20px;
-      border-radius: var(--radius); background: var(--navy); color: var(--paper);
+      border-radius: var(--radius); background: var(--grad-navy); color: var(--paper);
       position: relative; overflow: hidden;
     }
     .price-main::after {
@@ -369,7 +374,7 @@
       position: absolute; top: 0; left: 0;
       width: 46px; height: 46px; border-radius: 50%;
       display: grid; place-items: center;
-      background: var(--accent); color: var(--paper); font-family: var(--font-head); font-weight: 700;
+      background: var(--grad-blue); color: var(--paper); font-family: var(--font-head); font-weight: 700;
       box-shadow: 0 0 0 6px var(--accent-soft);
     }
     /* Направляющая к следующему шагу: сплошная линия и стрелка */
@@ -394,12 +399,13 @@
     .platforms li {
       display: flex; gap: 16px; align-items: flex-start;
       padding: 20px 22px; border-radius: var(--radius);
-      background: var(--navy-soft); border: 1px solid var(--navy-line);
+      background: var(--grad-glass); border: 1px solid rgba(127, 195, 240, .35);
     }
     .platform-icon {
-      flex: none; width: 44px; height: 44px; border-radius: 12px;
-      background: var(--sky); display: grid; place-items: center;
+      flex: none; width: 48px; height: 48px; border-radius: 50%;
+      background: var(--grad-icon); display: grid; place-items: center; box-shadow: 0 6px 16px rgba(2, 18, 36, .35);
     }
+    .platform-icon svg { stroke: var(--paper); }
     .platforms strong { display: block; font-size: 1.05rem; }
     .platforms p { color: var(--muted-dark); font-size: .92rem; margin: 2px 0 0; }
 
@@ -807,8 +813,8 @@
       <div class="container contacts-grid">
         <div>
           <span class="eyebrow">Контакты</span>
-          <h2 id="contacts-title">Запишитесь на бесплатный замер</h2>
-          <p class="lead-dark">Позвоните или напишите — ответим на вопросы и договоримся о времени.</p>
+          <h2 id="contacts-title">Запишитесь на бесплатный замер или расчёт сметы по дизайн-проекту</h2>
+          <p class="lead-dark">Позвоните или напишите — ответим на вопросы и договоримся о времени. Если дизайн-проект уже есть, смету рассчитаем удалённо и бесплатно.</p>
           <ul class="contact-list">
             <li><span>Телефон</span><a href="tel:+79522033777">+7 (952) 203-37-77</a></li>
             <li><span>Телефон</span><a href="tel:+79044337922">+7 (904) 433-79-22</a></li>
