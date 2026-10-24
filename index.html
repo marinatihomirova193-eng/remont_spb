@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ремонт квартир и домов в СПб и Ленобласти — Ремонтная бригада по доступным ценам</title>
+  <title>Честный ремонт — ремонт квартир и домов в СПб и Ленобласти по доступным ценам</title>
   <meta name="description" content="Ремонт квартир и домов в Санкт-Петербурге и Ленинградской области: бесплатный замер и смета, без предоплаты, гарантия 3 года. В среднем от 15 000 ₽ за м².">
   <meta name="yandex-verification" content="8bc4201a25af74ee">
   <link rel="canonical" href="https://remont-spb.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="Ремонтная бригада по доступным ценам">
+  <meta property="og:site_name" content="Честный ремонт">
   <meta property="og:title" content="Ремонт квартир и домов в СПб и Ленобласти">
   <meta property="og:description" content="Бесплатный замер и смета, без предоплаты, гарантия 3 года. В среднем от 15 000 ₽ за м².">
   <meta property="og:url" content="https://remont-spb.github.io/">
@@ -18,7 +18,8 @@
   {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
-    "name": "Ремонтная бригада по доступным ценам",
+    "name": "Честный ремонт",
+    "slogan": "Ремонтная бригада по доступным ценам",
     "url": "https://remont-spb.github.io/",
     "description": "Ремонт квартир и частных домов под ключ или отдельные работы. Бесплатный замер и смета, оплата по факту без предоплаты, гарантия 3 года на все виды работ.",
     "telephone": ["+7-952-203-37-77", "+7-904-433-79-22"],
@@ -139,9 +140,11 @@
     .header-inner { display: flex; align-items: center; gap: 24px; min-height: 72px; }
     .logo {
       display: flex; align-items: center; gap: 12px;
-      text-decoration: none; font-family: var(--font-head); font-weight: 700;
-      font-size: 1rem; line-height: 1.2; max-width: 340px;
+      text-decoration: none; max-width: 340px;
     }
+    .logo-text { display: flex; flex-direction: column; gap: 2px; }
+    .logo-name { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; line-height: 1.15; }
+    .logo-slogan { font-weight: 600; font-size: .78rem; line-height: 1.3; color: var(--muted); }
     .logo-mark {
       flex: none; width: 40px; height: 40px; border-radius: 10px;
       background: var(--accent); display: grid; place-items: center;
@@ -294,7 +297,9 @@
     @media (max-width: 1080px) {
       /* Меню целиком не влезает рядом с кнопкой: «Связаться» дублирует пункт «Контакты» */
       .header-inner { gap: 16px; }
-      .logo { font-size: .9rem; max-width: 230px; }
+      .logo { max-width: 240px; }
+      .logo-name { font-size: 1rem; }
+      .logo-slogan { font-size: .72rem; }
       .nav a { padding: 8px 10px; }
       .header-cta { display: none; }
     }
@@ -306,7 +311,7 @@
       .section { padding: 64px 0; }
       .nav { display: none; }
       .header-cta { display: inline-flex; margin-left: auto; }
-      .logo { font-size: .85rem; max-width: 200px; }
+      .logo { max-width: 220px; gap: 10px; }
       .hero { padding: 44px 0 64px; }
       .hero-grid, .regions-grid, .about-grid, .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
       .hero-art { max-width: 380px; }
@@ -322,6 +327,11 @@
       .cards-4 { grid-template-columns: 1fr; }
       .hero-actions .btn, .price-main .btn { width: 100%; }
     }
+    @media (max-width: 420px) {
+      /* Узкий телефон: без значка, чтобы название уместилось в одну строку */
+      .logo-mark { display: none; }
+      .header-cta { padding: 8px 14px; }
+    }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -334,11 +344,14 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="#top" aria-label="Ремонтная бригада по доступным ценам — в начало страницы">
+      <a class="logo" href="#top" aria-label="Честный ремонт — в начало страницы">
         <span class="logo-mark" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l8-8"/><path d="M14.5 3.5a4 4 0 0 0 5.6 5.6l-2.8 2.8-5.6-5.6z"/><path d="M11.7 6.3l5.6 5.6"/></svg>
         </span>
-        Ремонтная бригада по доступным ценам
+        <span class="logo-text">
+          <span class="logo-name">Честный ремонт</span>
+          <span class="logo-slogan">Ремонтная бригада по доступным ценам</span>
+        </span>
       </a>
       <nav class="nav" aria-label="Разделы сайта">
         <ul>
@@ -687,7 +700,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>© 2026 Ремонтная бригада по доступным ценам · Санкт-Петербург и Ленинградская область</span>
+      <span>© 2026 «Честный ремонт» — ремонтная бригада по доступным ценам · Санкт-Петербург и Ленинградская область</span>
       <a href="#top">Наверх ↑</a>
     </div>
   </footer>
