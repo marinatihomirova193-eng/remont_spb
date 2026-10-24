@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Честный ремонт — ремонт квартир и домов в СПб и Ленобласти по доступным ценам</title>
-  <meta name="description" content="Ремонт квартир и домов в Санкт-Петербурге и Ленинградской области: бесплатный замер и смета, без предоплаты, гарантия 3 года. В среднем от 15 000 ₽ за м².">
+  <meta name="description" content="Ремонт квартир и домов в Санкт-Петербурге и Ленинградской области: бесплатный замер и смета, без предоплаты, гарантия 3 года. Стоимость — от 15 000 ₽ за м².">
   <meta name="yandex-verification" content="8bc4201a25af74ee">
   <link rel="canonical" href="https://remont-spb.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="Честный ремонт">
   <meta property="og:title" content="Ремонт квартир и домов в СПб и Ленобласти">
-  <meta property="og:description" content="Бесплатный замер и смета, без предоплаты, гарантия 3 года. В среднем от 15 000 ₽ за м².">
+  <meta property="og:description" content="Бесплатный замер и смета, без предоплаты, гарантия 3 года. Стоимость — от 15 000 ₽ за м².">
   <meta property="og:url" content="https://remont-spb.github.io/">
   <meta property="og:image" content="https://remont-spb.github.io/img/logo-full.jpg">
   <meta property="og:image:width" content="1200">
@@ -42,7 +42,7 @@
       "opens": "08:30",
       "closes": "20:00"
     }],
-    "priceRange": "15 000–18 000 ₽ за м²",
+    "priceRange": "от 15 000 ₽ за м²",
     "currenciesAccepted": "RUB",
     "paymentAccepted": "Наличные, безналичный расчёт"
   }
@@ -174,25 +174,46 @@
     .header-cta:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
 
     /* ===== Первый экран ===== */
-    .hero { padding: 72px 0 88px; background: linear-gradient(180deg, #f5f9fd 0%, var(--mist) 100%); }
+    /* Тёмно-синий первый экран; на нём акцент — голубой --sky */
+    .hero {
+      padding: 72px 0 88px; color: var(--paper);
+      background:
+        radial-gradient(ellipse at 78% 45%, rgba(20, 111, 176, .55) 0%, rgba(20, 111, 176, 0) 60%),
+        linear-gradient(160deg, #0b3f71 0%, var(--navy) 50%, #062a4b 100%);
+    }
     .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
     .hero-grid > * { min-width: 0; }
-    .hero h1 { font-size: clamp(1.6rem, 4.4vw, 3.1rem); margin-bottom: .45em; hyphens: auto; }
-    .hero h1 span { background: linear-gradient(transparent 62%, #bfe3f8 62%); }
-    .hero-lead { font-size: 1.15rem; color: var(--muted); max-width: 540px; margin-bottom: 32px; }
+    .hero h1 { font-size: clamp(1.6rem, 4.4vw, 3.1rem); margin-bottom: .45em; hyphens: auto; color: var(--paper); }
+    .hero h1 span { background: linear-gradient(transparent 62%, rgba(49, 184, 230, .45) 62%); }
+    .hero .eyebrow { color: var(--sky); }
+    .hero :focus-visible { outline-color: var(--sky); }
+    .hero-lead { font-size: 1.15rem; color: var(--muted-dark); max-width: 540px; margin-bottom: 32px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero .btn-primary { background: var(--sky); border-color: var(--sky); color: var(--navy); }
+    .hero .btn-primary:hover { background: #5cc8ee; border-color: #5cc8ee; }
+    .hero .btn-ghost { color: var(--paper); border-color: rgba(255, 255, 255, .7); }
+    .hero .btn-ghost:hover { border-color: var(--paper); background: rgba(255, 255, 255, .08); }
     .hero-stats {
       display: flex; flex-wrap: wrap; gap: 12px 32px;
       list-style: none; margin: 36px 0 0; padding: 24px 0 0;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--navy-line);
     }
-    .hero-stats strong { display: block; font-family: var(--font-head); font-size: 1.15rem; color: var(--navy); }
-    .hero-stats span { color: var(--muted); font-size: .92rem; }
-    .hero-art { display: grid; place-items: center; }
+    .hero-stats strong { display: block; font-family: var(--font-head); font-size: 1.15rem; color: var(--paper); }
+    .hero-stats span { color: var(--muted-dark); font-size: .92rem; }
+    .hero-art { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    /* Эмблема на белом круге: её тёмно-синий контур иначе сольётся с фоном */
     .hero-art img {
-      width: 100%; max-width: 420px;
-      background: radial-gradient(closest-side, #fff 55%, rgba(255, 255, 255, 0) 100%);
+      width: 100%; max-width: 380px; aspect-ratio: 1; object-fit: contain;
+      padding: 7%; border-radius: 50%; background: var(--paper);
+      box-shadow: 0 0 0 10px rgba(49, 184, 230, .14), 0 28px 60px rgba(2, 18, 36, .45);
     }
+    /* Девиз с товарного знака, с линиями по бокам — как на логотипе */
+    .hero-tagline {
+      display: flex; align-items: center; gap: 14px; margin: 0;
+      font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted-dark); text-align: center;
+    }
+    .hero-tagline::before, .hero-tagline::after { content: ""; flex: none; width: 28px; height: 1px; background: var(--sky); }
 
     /* ===== Карточки ===== */
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -335,7 +356,9 @@
       .logo { max-width: 240px; }
       .hero { padding: 44px 0 64px; }
       .hero-grid, .regions-grid, .about-grid, .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-art img { max-width: 300px; }
+      .hero-art img { max-width: 260px; }
+      .hero-tagline { font-size: .72rem; letter-spacing: .1em; gap: 10px; }
+      .hero-tagline::before, .hero-tagline::after { width: 18px; }
       .cards, .reasons { grid-template-columns: 1fr; }
       .reason { padding: 24px 22px 24px 80px; }
       .price-main { grid-template-columns: 1fr; padding: 28px 24px 34px; }
@@ -402,13 +425,14 @@
             <a class="btn btn-ghost" href="#ceny">Узнать цены</a>
           </div>
           <ul class="hero-stats" aria-label="Коротко об условиях">
-            <li><strong>от 15&nbsp;000&nbsp;₽</strong><span>за м² в среднем</span></li>
+            <li><strong>от 15&nbsp;000&nbsp;₽</strong><span>за м²</span></li>
             <li><strong>0&nbsp;₽</strong><span>предоплаты</span></li>
             <li><strong>3&nbsp;дня</strong><span>до выхода бригады</span></li>
           </ul>
         </div>
         <div class="hero-art">
           <img src="img/logo-emblem-480.png" width="480" height="454" alt="Товарный знак «Честный ремонт»: дом и щит с галочкой" fetchpriority="high">
+          <p class="hero-tagline">Прозрачность. Доверие. Технологии.</p>
         </div>
       </div>
     </section>
@@ -567,8 +591,8 @@
         </div>
         <div class="price-main">
           <div>
-            <p class="price-label">В среднем</p>
-            <p class="price-value">15&nbsp;000 – 18&nbsp;000&nbsp;₽ <small>за м²</small></p>
+            <p class="price-label">Стоимость ремонта</p>
+            <p class="price-value">от 15&nbsp;000&nbsp;₽ <small>за м²</small></p>
             <p>Итоговая цена зависит от сложности работ. Дополнительные работы — только по согласованию с Вами. При большом объёме или комплексном ремонте — скидки.</p>
           </div>
           <a class="btn btn-primary" href="#kontakty">Рассчитать смету бесплатно</a>
