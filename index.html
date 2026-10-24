@@ -162,16 +162,24 @@
     .logo-slogan { font-weight: 600; font-size: .78rem; line-height: 1.3; color: var(--muted); }
     .nav { margin-left: auto; }
     .nav ul { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+    /* Пункты меню — заметные светло-голубые плашки */
     .nav a {
       display: block; padding: 8px 14px; border-radius: 10px;
-      text-decoration: none; font-weight: 600; font-size: .95rem; white-space: nowrap; color: var(--navy);
-      transition: background-color .2s ease, color .2s ease;
+      text-decoration: none; font-weight: 700; font-size: .95rem; white-space: nowrap; color: var(--navy);
+      background: var(--mist); border: 1px solid #cddff0;
+      transition: background-color .2s ease, color .2s ease, border-color .2s ease;
     }
-    .nav a:hover { background: var(--mist); }
+    .nav a:hover { background: var(--accent-soft); border-color: var(--accent); }
     /* Текущий раздел: aria-current ставит скрипт в конце страницы */
-    .nav a[aria-current] { background: var(--accent-soft); color: var(--accent-dark); box-shadow: inset 0 -2px 0 var(--accent); }
-    .header-cta { min-height: 42px; padding: 8px 18px; font-size: .95rem; background: var(--accent); border-color: var(--accent); color: var(--paper); }
-    .header-cta:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .nav a[aria-current] { background: var(--accent-soft); color: var(--accent-dark); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+    /* «Связаться» — главная кнопка шапки: крупнее, с иконкой и тенью, чтобы выделяться на фоне плашек меню */
+    .header-cta {
+      gap: 8px; min-height: 46px; padding: 10px 22px; font-size: 1rem; font-weight: 800;
+      background: var(--accent); border-color: var(--accent); color: var(--paper);
+      box-shadow: 0 6px 18px rgba(20, 111, 176, .38);
+    }
+    .header-cta svg { flex: none; }
+    .header-cta:hover { background: var(--accent-dark); border-color: var(--accent-dark); box-shadow: 0 8px 22px rgba(20, 111, 176, .45); }
 
     /* ===== Первый экран ===== */
     /* Тёмно-синий первый экран; на нём акцент — голубой --sky */
@@ -227,36 +235,47 @@
       width: 48px; height: 48px; border-radius: 12px; margin-bottom: 18px;
       background: var(--mist); display: grid; place-items: center;
     }
-    .card-accent { background: var(--accent-soft); border-color: #c4def4; }
-    .card-accent .card-icon { background: var(--paper); }
+    /* «Преимущества» — светло-голубые плашки; выделенная плашка — тёмно-синяя (.card-dark) */
+    #preimushchestva .card:not(.card-dark) { background: var(--accent-soft); border-color: #c4def4; }
+    #preimushchestva .card:not(.card-dark) .card-icon { background: var(--paper); }
+    .card-dark { background: var(--navy); border-color: var(--navy); }
+    .card-dark h3 { color: var(--paper); }
+    .card-dark p { color: var(--muted-dark); }
+    .card-dark .card-icon { background: var(--navy-soft); }
+    .card-dark .card-icon svg { stroke: var(--sky); }
 
     /* ===== Почему дешевле ===== */
     .reasons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; counter-reset: reason; list-style: none; margin: 0; padding: 0; }
+    /* Светло-голубые плашки на тёмно-синем фоне — в тон остальным плашкам сайта */
     .reason {
       position: relative; padding: 28px 28px 28px 92px;
-      border: 1px solid var(--navy-line); border-radius: var(--radius); background: var(--navy-soft);
+      border: 1px solid #c4def4; border-radius: var(--radius); background: var(--accent-soft);
     }
     .reason::before {
       counter-increment: reason; content: counter(reason, decimal-leading-zero);
       position: absolute; left: 26px; top: 26px;
-      font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: var(--sky);
+      font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: var(--accent);
     }
-    .reason p { color: var(--muted-dark); margin: 0; }
+    .section-dark .reason h3 { color: var(--navy); }
+    .reason p { color: var(--muted); margin: 0; }
 
     /* ===== Регионы ===== */
     .regions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
     .regions-grid .section-head { margin-bottom: 0; }
     .chips { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; margin: 0 0 24px; padding: 0; }
+    /* Регионы и пояснение — тёмно-синие плашки */
     .chips li {
       display: flex; align-items: center; gap: 10px;
       padding: 14px 22px; border-radius: 999px;
-      background: var(--paper); border: 1px solid var(--line);
-      font-weight: 700; font-size: 1.05rem; color: var(--navy);
+      background: var(--navy); border: 1px solid var(--navy);
+      font-weight: 700; font-size: 1.05rem; color: var(--paper);
     }
+    .chips svg { stroke: var(--sky); }
     .note-box {
-      background: var(--paper); border-left: 6px solid var(--accent);
+      background: var(--navy); color: var(--muted-dark); border-left: 6px solid var(--sky);
       border-radius: 0 var(--radius) var(--radius) 0; padding: 22px 24px;
     }
+    .note-box strong { color: var(--paper); }
     .note-box p:last-child { margin: 0; }
 
     /* ===== О компании ===== */
@@ -289,6 +308,12 @@
     .price-cards .card h3 { margin-bottom: .8em; }
 
     /* ===== Условия ===== */
+    /* Шаги 1–6 — в одной общей светло-голубой плашке */
+    .steps-box {
+      padding: 36px 36px 40px; border-radius: var(--radius);
+      background: var(--accent-soft); border: 1px solid #c4def4;
+    }
+    .steps-box .step::after { background: #b7d4ee; }
     .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 24px; counter-reset: step; }
     .step { position: relative; padding-top: 64px; }
     .step::before {
@@ -362,6 +387,7 @@
       .cards, .reasons { grid-template-columns: 1fr; }
       .reason { padding: 24px 22px 24px 80px; }
       .price-main { grid-template-columns: 1fr; padding: 28px 24px 34px; }
+      .steps-box { padding: 26px 20px 28px; }
       .steps { grid-template-columns: 1fr; gap: 24px; }
       .step { padding: 4px 0 0 66px; min-height: 46px; }
       .step::after, .step:nth-child(3n)::after { display: block; top: 54px; left: 22px; right: auto; bottom: -22px; width: 2px; height: auto; }
@@ -378,7 +404,8 @@
       .logo-mark { width: 38px; }
       .logo-name { font-size: .92rem; }
       .logo-slogan { font-size: .66rem; }
-      .header-cta { padding: 8px 12px; font-size: .88rem; }
+      .header-cta { padding: 8px 12px; font-size: .88rem; min-height: 42px; }
+      .header-cta svg { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -408,7 +435,10 @@
           <li><a href="#kontakty">Контакты</a></li>
         </ul>
       </nav>
-      <a class="btn header-cta" href="#kontakty">Связаться</a>
+      <a class="btn header-cta" href="#kontakty">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h3.5l2 5-2.5 1.5a11 11 0 0 0 6 6l1.5-2.5 5 2V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-1.5z"/></svg>
+        Связаться
+      </a>
     </div>
   </header>
 
@@ -467,7 +497,7 @@
             <h3>Выходим за 3 дня</h3>
             <p>В бригаде больше 20 человек, поэтому начинаем не позже чем через 3 календарных дня после договора.</p>
           </article>
-          <article class="card card-accent">
+          <article class="card card-dark">
             <div class="card-icon" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
             </div>
@@ -634,34 +664,36 @@
           <h2 id="terms-title">Как мы работаем</h2>
           <p>Работаем официально: заключаем договор, выдаём чеки и подписываем акты.</p>
         </div>
-        <ol class="steps">
-          <li class="step">
-            <h3>Заявка</h3>
-            <p>Позвоните или напишите в Telegram или MAX — договоримся о замере.</p>
-          </li>
-          <li class="step">
-            <h3>Замер и смета</h3>
-            <p>Бригадир приезжает бесплатно и составляет подробную смету.</p>
-          </li>
-          <li class="step">
-            <h3>Договор</h3>
-            <p>Фиксируем смету, сроки, гарантии и ответственность сторон.</p>
-          </li>
-          <li class="step">
-            <h3>Выход бригады</h3>
-            <p>В течение 3 календарных дней после подписания договора.</p>
-          </li>
-          <li class="step">
-            <h3>Ремонт по этапам</h3>
-            <p>Принимаете каждый этап по акту. Есть замечания — исправляем до подписания.</p>
-          </li>
-          <li class="step">
-            <h3>Сдача и гарантия</h3>
-            <p>Гарантия 3 года на все виды работ.</p>
-          </li>
-        </ol>
+        <div class="steps-box">
+          <ol class="steps">
+            <li class="step">
+              <h3>Заявка</h3>
+              <p>Позвоните или напишите в Telegram или MAX — договоримся о замере.</p>
+            </li>
+            <li class="step">
+              <h3>Замер и смета</h3>
+              <p>Бригадир приезжает бесплатно и составляет подробную смету.</p>
+            </li>
+            <li class="step">
+              <h3>Договор</h3>
+              <p>Фиксируем смету, сроки, гарантии и ответственность сторон.</p>
+            </li>
+            <li class="step">
+              <h3>Выход бригады</h3>
+              <p>В течение 3 календарных дней после подписания договора.</p>
+            </li>
+            <li class="step">
+              <h3>Ремонт по этапам</h3>
+              <p>Принимаете каждый этап по акту. Есть замечания — исправляем до подписания.</p>
+            </li>
+            <li class="step">
+              <h3>Сдача и гарантия</h3>
+              <p>Гарантия 3 года на все виды работ.</p>
+            </li>
+          </ol>
+        </div>
         <div class="cards cards-4 terms-extra">
-          <div class="card card-accent">
+          <div class="card card-dark">
             <h3>Без предоплаты</h3>
             <p>Оплата поэтапно, по факту выполненных работ, после подписания акта.</p>
           </div>
