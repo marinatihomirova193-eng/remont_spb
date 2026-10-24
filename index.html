@@ -128,7 +128,9 @@
     .btn svg { flex: none; }
     .btn-primary { background: var(--grad-blue); border-color: var(--accent); color: var(--paper); }
     .btn-primary:hover { background: var(--grad-blue-hover); border-color: var(--accent-dark); }
-    .btn-ghost { background: transparent; color: var(--navy); }
+    /* Светлая переливающаяся кнопка «Рассчитать смету по дизайн-проекту» — выделяется на тёмном фоне */
+    .btn-light { background: var(--grad-soft); border-color: #cddff0; color: var(--navy); box-shadow: 0 10px 24px rgba(2, 18, 36, .3); }
+    .btn-light:hover { background: var(--grad-soft-hover); border-color: var(--paper); }
 
     .section { padding: 88px 0; }
     .section-alt { background: var(--mist); }
@@ -209,8 +211,6 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
     .hero .btn-primary { background: var(--grad-blue); border-color: #1c86cb; color: var(--paper); box-shadow: 0 10px 24px rgba(2, 18, 36, .35); }
     .hero .btn-primary:hover { background: var(--grad-blue-hover); border-color: var(--accent); }
-    .hero .btn-ghost { color: var(--paper); border-color: rgba(255, 255, 255, .7); }
-    .hero .btn-ghost:hover { border-color: var(--paper); background: rgba(255, 255, 255, .08); }
     .hero-stats {
       display: flex; flex-wrap: wrap; gap: 12px 32px;
       list-style: none; margin: 36px 0 0; padding: 24px 0 0;
@@ -362,8 +362,6 @@
     .price-main p:last-child { margin: 0; color: var(--muted-dark); max-width: 560px; }
     .price-main :focus-visible { outline-color: var(--sky); }
     .price-actions { display: flex; flex-direction: column; gap: 12px; }
-    .price-main .btn-ghost { color: var(--paper); border-color: rgba(255, 255, 255, .7); }
-    .price-main .btn-ghost:hover { border-color: var(--paper); background: rgba(255, 255, 255, .08); }
     .price-cards .card h3 { margin-bottom: .8em; }
 
     /* ===== Условия ===== */
@@ -556,7 +554,7 @@
           <p class="hero-lead">Ремонт под ключ или отдельные работы по договорённости. Бесплатный замер, подробная смета от бригадира и гарантия 3&nbsp;года на все виды работ.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#kontakty">Записаться на бесплатный замер</a>
-            <a class="btn btn-ghost" href="#kontakty"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><path d="M12 8v13"/><path d="M12 8C10 4 6.5 4 6.5 6.2S10 8 12 8zM12 8c2-4 5.5-4 5.5-1.8S14 8 12 8z"/></svg> Рассчитать смету по дизайн-проекту в подарок</a>
+            <a class="btn btn-light" href="#kontakty"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2.5h9l4 4v15H6z"/><path d="M14.5 2.5v4.5H19"/><path d="M9 14l2 2 4-4"/></svg> Рассчитать смету по дизайн-проекту</a>
           </div>
           <ul class="hero-stats" aria-label="Коротко об условиях">
             <li><strong>от 15&nbsp;000&nbsp;₽</strong><span>за м²</span></li>
@@ -752,7 +750,7 @@
           </div>
           <div class="price-actions">
             <a class="btn btn-primary" href="#kontakty">Рассчитать смету бесплатно</a>
-            <a class="btn btn-ghost" href="#kontakty"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><path d="M12 8v13"/><path d="M12 8C10 4 6.5 4 6.5 6.2S10 8 12 8zM12 8c2-4 5.5-4 5.5-1.8S14 8 12 8z"/></svg> Рассчитать смету по дизайн-проекту в подарок</a>
+            <a class="btn btn-light" href="#kontakty"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2.5h9l4 4v15H6z"/><path d="M14.5 2.5v4.5H19"/><path d="M9 14l2 2 4-4"/></svg> Рассчитать смету по дизайн-проекту</a>
           </div>
         </div>
         <div class="cards price-cards">
@@ -852,8 +850,8 @@
               <span><strong>Замер на объекте</strong>бригадир приедет бесплатно</span>
             </li>
             <li>
-              <span class="offer-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><path d="M12 8v13"/><path d="M12 8C10 4 6.5 4 6.5 6.2S10 8 12 8zM12 8c2-4 5.5-4 5.5-1.8S14 8 12 8z"/></svg></span>
-              <span><strong>Смета по дизайн-проекту</strong>рассчитаем удалённо — в подарок</span>
+              <span class="offer-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h9l4 4v15H6z"/><path d="M14.5 2.5v4.5H19"/><path d="M9 14l2 2 4-4"/></svg></span>
+              <span><strong>Смета по дизайн-проекту</strong>рассчитаем удалённо</span>
             </li>
           </ul>
           <p class="lead-dark">Позвоните — договоримся о времени и ответим на вопросы.</p>
