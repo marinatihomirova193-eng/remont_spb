@@ -13,6 +13,13 @@
   <meta property="og:title" content="Ремонт квартир и домов в СПб и Ленобласти">
   <meta property="og:description" content="Бесплатный замер и смета, без предоплаты, гарантия 3 года. В среднем от 15 000 ₽ за м².">
   <meta property="og:url" content="https://remont-spb.github.io/">
+  <meta property="og:image" content="https://remont-spb.github.io/img/logo-full.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="Товарный знак «Честный ремонт»">
+  <meta name="theme-color" content="#083762">
+  <link rel="icon" type="image/png" href="img/logo-emblem-64.png">
+  <link rel="apple-touch-icon" href="img/logo-emblem-160.png">
   <!-- Описание организации для поисковиков (schema.org). Факты — только из базы знаний. -->
   <script type="application/ld+json">
   {
@@ -21,6 +28,8 @@
     "name": "Честный ремонт",
     "slogan": "Ремонтная бригада по доступным ценам",
     "url": "https://remont-spb.github.io/",
+    "logo": "https://remont-spb.github.io/img/logo-full.jpg",
+    "image": "https://remont-spb.github.io/img/logo-full.jpg",
     "description": "Ремонт квартир и частных домов под ключ или отдельные работы. Бесплатный замер и смета, оплата по факту без предоплаты, гарантия 3 года на все виды работ.",
     "telephone": ["+7-952-203-37-77", "+7-904-433-79-22"],
     "areaServed": [
@@ -42,24 +51,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* ===== Дизайн-токены ===== */
+    /* ===== Дизайн-токены (цвета взяты с товарного знака «Честный ремонт») ===== */
     :root {
-      --ink: #1c1d1f;          /* основной текст, тёмные блоки */
-      --ink-soft: #242528;     /* карточки на тёмном фоне */
-      --ink-line: #34363a;
+      --ink: #14263d;          /* основной текст */
+      --navy: #083762;         /* тёмно-синий логотипа: заголовки, тёмные блоки */
+      --navy-soft: #0e4373;    /* карточки на тёмно-синем фоне */
+      --navy-line: #21558a;
       --paper: #ffffff;
-      --concrete: #f3f1ec;     /* светлый фон секций */
-      --accent: #f5b800;       /* строительный жёлтый */
-      --accent-dark: #d9a300;
-      --accent-soft: #fff6d6;
-      --muted: #5e6168;        /* второстепенный текст */
-      --muted-dark: #c4c6cb;   /* второстепенный текст на тёмном */
-      --line: #e4e1da;
+      --mist: #eef4fa;         /* светлый фон секций, как фон логотипа */
+      --accent: #146fb0;       /* синий для кнопок: белый текст читается (контраст 5.3) */
+      --accent-dark: #0f5a91;
+      --accent-soft: #e4f1fb;
+      --sky: #31b8e6;          /* голубой щита: акценты на тёмно-синем фоне */
+      --muted: #536176;        /* второстепенный текст */
+      --muted-dark: #b9cbe0;   /* второстепенный текст на тёмно-синем */
+      --line: #d9e4ef;
       --radius: 14px;
       --container: 1120px;
       --font-head: "Unbounded", "Arial Black", sans-serif;
       --font-body: "Manrope", "Segoe UI", Arial, sans-serif;
-      --stripe: repeating-linear-gradient(-45deg, var(--accent) 0 14px, var(--ink) 14px 28px);
+      --brand-line: linear-gradient(90deg, var(--navy), var(--accent) 55%, var(--sky));
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -73,8 +84,10 @@
       line-height: 1.6;
     }
     img, svg { display: block; max-width: 100%; }
+    img { height: auto; }
     a { color: inherit; }
-    h1, h2, h3 { font-family: var(--font-head); line-height: 1.2; margin: 0 0 .5em; overflow-wrap: break-word; }
+    h1, h2, h3 { font-family: var(--font-head); line-height: 1.2; margin: 0 0 .5em; overflow-wrap: break-word; color: var(--navy); }
+    .section-dark h2, .section-dark h3 { color: var(--paper); }
     h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
     h3 { font-size: 1.05rem; }
     p { margin: 0 0 1em; }
@@ -84,12 +97,13 @@
       outline-offset: 3px;
       border-radius: 6px;
     }
+    .section-dark :focus-visible { outline-color: var(--sky); }
 
     .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
     section[id] { scroll-margin-top: 84px; }
     .skip-link {
       position: absolute; left: 12px; top: -60px;
-      background: var(--ink); color: var(--paper);
+      background: var(--navy); color: var(--paper);
       padding: 10px 16px; border-radius: 8px; z-index: 100;
     }
     .skip-link:focus { top: 12px; }
@@ -97,36 +111,37 @@
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       min-height: 48px; padding: 12px 26px;
-      border-radius: 10px; border: 2px solid var(--ink);
+      border-radius: 10px; border: 2px solid var(--navy);
       font-weight: 700; text-decoration: none; text-align: center;
       transition: transform .15s ease, background-color .15s ease;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+    .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
     .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
-    .btn-ghost { background: transparent; color: var(--ink); }
+    .btn-ghost { background: transparent; color: var(--navy); }
 
     .section { padding: 88px 0; }
-    .section-alt { background: var(--concrete); }
-    .section-dark { background: var(--ink); color: var(--paper); }
+    .section-alt { background: var(--mist); }
+    .section-dark { background: var(--navy); color: var(--paper); }
     .section-head { max-width: 680px; margin-bottom: 44px; }
     .section-head p { color: var(--muted); font-size: 1.05rem; }
     .section-dark .section-head p, .section-dark .lead-dark { color: var(--muted-dark); }
+    /* Метка над заголовком: ромб и линия — как разделитель на товарном знаке */
     .eyebrow {
-      display: inline-block; margin-bottom: 12px;
+      display: inline-flex; align-items: center; margin-bottom: 12px;
       font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
     }
     .eyebrow::before {
-      content: ""; display: inline-block; width: 22px; height: 8px; margin-right: 10px;
-      background: var(--stripe); vertical-align: middle; border-radius: 2px;
+      content: ""; flex: none; width: 7px; height: 7px; margin-right: 12px;
+      border: 2px solid currentColor; transform: rotate(45deg);
     }
-    .section-dark .eyebrow { color: var(--muted-dark); }
+    .section-dark .eyebrow { color: var(--sky); }
     .ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
     .ticks li { position: relative; padding-left: 26px; color: var(--muted); }
     .ticks li::before {
       content: ""; position: absolute; left: 2px; top: .45em;
-      width: 12px; height: 7px; border-left: 3px solid var(--accent-dark); border-bottom: 3px solid var(--accent-dark);
+      width: 12px; height: 7px; border-left: 3px solid var(--accent); border-bottom: 3px solid var(--accent);
       transform: rotate(-45deg);
     }
 
@@ -134,40 +149,36 @@
     .site-header {
       position: sticky; top: 0; z-index: 50;
       background: var(--paper);
-      border-bottom: 1px solid var(--line);
     }
-    .site-header::after { content: ""; display: block; height: 6px; background: var(--stripe); }
+    .site-header::after { content: ""; display: block; height: 3px; background: var(--brand-line); }
     .header-inner { display: flex; align-items: center; gap: 24px; min-height: 72px; }
     .logo {
       display: flex; align-items: center; gap: 12px;
-      text-decoration: none; max-width: 340px;
+      text-decoration: none; max-width: 360px;
     }
+    .logo-mark { flex: none; width: 52px; height: auto; }
     .logo-text { display: flex; flex-direction: column; gap: 2px; }
-    .logo-name { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; line-height: 1.15; }
+    .logo-name { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; line-height: 1.15; color: var(--navy); }
     .logo-slogan { font-weight: 600; font-size: .78rem; line-height: 1.3; color: var(--muted); }
-    .logo-mark {
-      flex: none; width: 40px; height: 40px; border-radius: 10px;
-      background: var(--accent); display: grid; place-items: center;
-    }
     .nav { margin-left: auto; }
     .nav ul { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
     .nav a {
       display: block; padding: 8px 14px; border-radius: 10px;
-      text-decoration: none; font-weight: 600; font-size: .95rem; white-space: nowrap;
-      transition: background-color .2s ease;
+      text-decoration: none; font-weight: 600; font-size: .95rem; white-space: nowrap; color: var(--navy);
+      transition: background-color .2s ease, color .2s ease;
     }
-    .nav a:hover { background: var(--concrete); }
+    .nav a:hover { background: var(--mist); }
     /* Текущий раздел: aria-current ставит скрипт в конце страницы */
-    .nav a[aria-current] { background: var(--accent); }
-    .header-cta { min-height: 42px; padding: 8px 18px; font-size: .95rem; background: var(--ink); border-color: var(--ink); color: var(--paper); }
-    .header-cta:hover { background: #000; border-color: #000; }
+    .nav a[aria-current] { background: var(--accent-soft); color: var(--accent-dark); box-shadow: inset 0 -2px 0 var(--accent); }
+    .header-cta { min-height: 42px; padding: 8px 18px; font-size: .95rem; background: var(--accent); border-color: var(--accent); color: var(--paper); }
+    .header-cta:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
 
     /* ===== Первый экран ===== */
-    .hero { padding: 72px 0 88px; background: var(--concrete); }
+    .hero { padding: 72px 0 88px; background: linear-gradient(180deg, #f5f9fd 0%, var(--mist) 100%); }
     .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
     .hero-grid > * { min-width: 0; }
     .hero h1 { font-size: clamp(1.6rem, 4.4vw, 3.1rem); margin-bottom: .45em; hyphens: auto; }
-    .hero h1 span { background: linear-gradient(transparent 62%, var(--accent) 62%); }
+    .hero h1 span { background: linear-gradient(transparent 62%, #bfe3f8 62%); }
     .hero-lead { font-size: 1.15rem; color: var(--muted); max-width: 540px; margin-bottom: 32px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
     .hero-stats {
@@ -175,8 +186,13 @@
       list-style: none; margin: 36px 0 0; padding: 24px 0 0;
       border-top: 1px solid var(--line);
     }
-    .hero-stats strong { display: block; font-family: var(--font-head); font-size: 1.15rem; }
+    .hero-stats strong { display: block; font-family: var(--font-head); font-size: 1.15rem; color: var(--navy); }
     .hero-stats span { color: var(--muted); font-size: .92rem; }
+    .hero-art { display: grid; place-items: center; }
+    .hero-art img {
+      width: 100%; max-width: 420px;
+      background: radial-gradient(closest-side, #fff 55%, rgba(255, 255, 255, 0) 100%);
+    }
 
     /* ===== Карточки ===== */
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -188,21 +204,21 @@
     .card p { color: var(--muted); margin: 0; }
     .card-icon {
       width: 48px; height: 48px; border-radius: 12px; margin-bottom: 18px;
-      background: var(--concrete); display: grid; place-items: center;
+      background: var(--mist); display: grid; place-items: center;
     }
-    .card-accent { background: var(--accent-soft); border-color: #f1df9e; }
+    .card-accent { background: var(--accent-soft); border-color: #c4def4; }
     .card-accent .card-icon { background: var(--paper); }
 
     /* ===== Почему дешевле ===== */
     .reasons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; counter-reset: reason; list-style: none; margin: 0; padding: 0; }
     .reason {
       position: relative; padding: 28px 28px 28px 92px;
-      border: 1px solid var(--ink-line); border-radius: var(--radius); background: var(--ink-soft);
+      border: 1px solid var(--navy-line); border-radius: var(--radius); background: var(--navy-soft);
     }
     .reason::before {
       counter-increment: reason; content: counter(reason, decimal-leading-zero);
       position: absolute; left: 26px; top: 26px;
-      font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: var(--accent);
+      font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: var(--sky);
     }
     .reason p { color: var(--muted-dark); margin: 0; }
 
@@ -214,7 +230,7 @@
       display: flex; align-items: center; gap: 10px;
       padding: 14px 22px; border-radius: 999px;
       background: var(--paper); border: 1px solid var(--line);
-      font-weight: 700; font-size: 1.05rem;
+      font-weight: 700; font-size: 1.05rem; color: var(--navy);
     }
     .note-box {
       background: var(--paper); border-left: 6px solid var(--accent);
@@ -230,24 +246,25 @@
     .facts { display: grid; gap: 16px; list-style: none; margin: 0; padding: 0; }
     .facts li {
       display: flex; align-items: center; gap: 18px;
-      padding: 20px 24px; border-radius: var(--radius); background: var(--concrete);
+      padding: 20px 24px; border-radius: var(--radius); background: var(--mist);
     }
-    .facts strong { font-family: var(--font-head); font-size: 1.7rem; min-width: 3.4ch; }
+    .facts strong { font-family: var(--font-head); font-size: 1.7rem; min-width: 3.4ch; color: var(--accent); }
 
     /* ===== Цены ===== */
     .price-main {
       display: grid; grid-template-columns: 1fr auto; gap: 24px 40px; align-items: center;
       padding: 36px 40px; margin-bottom: 20px;
-      border-radius: var(--radius); background: var(--ink); color: var(--paper);
+      border-radius: var(--radius); background: var(--navy); color: var(--paper);
       position: relative; overflow: hidden;
     }
     .price-main::after {
-      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: var(--stripe);
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--brand-line);
     }
     .price-label { color: var(--muted-dark); font-weight: 600; margin-bottom: 6px; }
-    .price-value { font-family: var(--font-head); font-size: clamp(1.7rem, 4.4vw, 2.8rem); line-height: 1.1; color: var(--accent); margin: 0 0 .3em; }
+    .price-value { font-family: var(--font-head); font-size: clamp(1.7rem, 4.4vw, 2.8rem); line-height: 1.1; color: var(--sky); margin: 0 0 .3em; }
     .price-value small { font-size: .45em; color: var(--paper); }
     .price-main p:last-child { margin: 0; color: var(--muted-dark); max-width: 560px; }
+    .price-main :focus-visible { outline-color: var(--sky); }
     .price-cards .card h3 { margin-bottom: .8em; }
 
     /* ===== Условия ===== */
@@ -258,7 +275,7 @@
       position: absolute; top: 0; left: 0;
       width: 46px; height: 46px; border-radius: 50%;
       display: grid; place-items: center;
-      background: var(--accent); font-family: var(--font-head); font-weight: 700;
+      background: var(--accent); color: var(--paper); font-family: var(--font-head); font-weight: 700;
     }
     .step::after {
       content: ""; position: absolute; top: 22px; left: 58px; right: -12px;
@@ -274,30 +291,34 @@
     .contact-list { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 20px; }
     .contact-list span { display: block; font-size: .85rem; color: var(--muted-dark); }
     .contact-list a, .contact-list strong { font-size: 1.25rem; font-weight: 700; text-decoration: none; }
-    .contact-list a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+    .contact-list a:hover { text-decoration: underline; text-decoration-color: var(--sky); }
     .platforms { display: grid; gap: 14px; list-style: none; margin: 0; padding: 0; }
     .platforms li {
       display: flex; gap: 16px; align-items: flex-start;
       padding: 20px 22px; border-radius: var(--radius);
-      background: var(--ink-soft); border: 1px solid var(--ink-line);
+      background: var(--navy-soft); border: 1px solid var(--navy-line);
     }
     .platform-icon {
       flex: none; width: 44px; height: 44px; border-radius: 12px;
-      background: var(--accent); display: grid; place-items: center;
+      background: var(--sky); display: grid; place-items: center;
     }
     .platforms strong { display: block; font-size: 1.05rem; }
     .platforms p { color: var(--muted-dark); font-size: .92rem; margin: 2px 0 0; }
 
     /* ===== Подвал ===== */
-    .site-footer { background: var(--ink); color: #9a9ca2; font-size: .9rem; }
-    .site-footer::before { content: ""; display: block; height: 6px; background: var(--stripe); }
-    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 26px 20px; }
+    .site-footer { background: #062a4b; color: var(--muted-dark); font-size: .9rem; }
+    .site-footer::before { content: ""; display: block; height: 3px; background: var(--brand-line); }
+    .site-footer :focus-visible { outline-color: var(--sky); }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 26px 20px; }
+    .footer-brand { display: flex; align-items: center; gap: 12px; }
+    .footer-brand img { width: 40px; background: #fff; border-radius: 50%; padding: 3px; }
 
     /* ===== Адаптив ===== */
     @media (max-width: 1080px) {
       /* Меню целиком не влезает рядом с кнопкой: «Связаться» дублирует пункт «Контакты» */
       .header-inner { gap: 16px; }
-      .logo { max-width: 240px; }
+      .logo { max-width: 250px; gap: 10px; }
+      .logo-mark { width: 44px; }
       .logo-name { font-size: 1rem; }
       .logo-slogan { font-size: .72rem; }
       .nav a { padding: 8px 10px; }
@@ -311,10 +332,10 @@
       .section { padding: 64px 0; }
       .nav { display: none; }
       .header-cta { display: inline-flex; margin-left: auto; }
-      .logo { max-width: 220px; gap: 10px; }
+      .logo { max-width: 240px; }
       .hero { padding: 44px 0 64px; }
       .hero-grid, .regions-grid, .about-grid, .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-art { max-width: 380px; }
+      .hero-art img { max-width: 300px; }
       .cards, .reasons { grid-template-columns: 1fr; }
       .reason { padding: 24px 22px 24px 80px; }
       .price-main { grid-template-columns: 1fr; padding: 28px 24px 34px; }
@@ -328,9 +349,13 @@
       .hero-actions .btn, .price-main .btn { width: 100%; }
     }
     @media (max-width: 420px) {
-      /* Узкий телефон: без значка, чтобы название уместилось в одну строку */
-      .logo-mark { display: none; }
-      .header-cta { padding: 8px 14px; }
+      /* Узкий телефон: эмблема и название поменьше, чтобы шапка не разрасталась */
+      .header-inner { gap: 10px; }
+      .logo { gap: 8px; }
+      .logo-mark { width: 38px; }
+      .logo-name { font-size: .92rem; }
+      .logo-slogan { font-size: .66rem; }
+      .header-cta { padding: 8px 12px; font-size: .88rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -345,9 +370,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="#top" aria-label="Честный ремонт — в начало страницы">
-        <span class="logo-mark" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l8-8"/><path d="M14.5 3.5a4 4 0 0 0 5.6 5.6l-2.8 2.8-5.6-5.6z"/><path d="M11.7 6.3l5.6 5.6"/></svg>
-        </span>
+        <img class="logo-mark" src="img/logo-emblem-160.png" width="160" height="151" alt="">
         <span class="logo-text">
           <span class="logo-name">Честный ремонт</span>
           <span class="logo-slogan">Ремонтная бригада по доступным ценам</span>
@@ -385,29 +408,7 @@
           </ul>
         </div>
         <div class="hero-art">
-          <svg viewBox="0 0 400 320" role="img" aria-label="Иллюстрация: валик красит кирпичную стену в жёлтый цвет">
-            <defs>
-              <clipPath id="frame"><rect width="400" height="320" rx="20"/></clipPath>
-              <pattern id="bricks" width="60" height="30" patternUnits="userSpaceOnUse">
-                <rect width="60" height="30" fill="#ebe7df"/>
-                <path d="M0 .5H60M30 0V15M0 15.5H60M.5 15V30" stroke="#d6cfc2" stroke-width="1.5"/>
-              </pattern>
-              <pattern id="hazard" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <rect width="14" height="28" fill="#f5b800"/>
-                <rect x="14" width="14" height="28" fill="#1c1d1f"/>
-              </pattern>
-            </defs>
-            <g clip-path="url(#frame)">
-              <rect width="400" height="320" fill="url(#bricks)"/>
-              <rect width="232" height="276" fill="#f5b800"/>
-              <rect x="226" y="96" width="12" height="180" fill="#f5b800" opacity=".55"/>
-              <rect y="276" width="400" height="44" fill="url(#hazard)"/>
-            </g>
-            <rect x="214" y="70" width="40" height="128" rx="12" fill="#ffd34d" stroke="#1c1d1f" stroke-width="4"/>
-            <path d="M224 84v100M234 84v100M244 84v100" stroke="#d9a300" stroke-width="3" stroke-linecap="round"/>
-            <path d="M254 134h40v74" fill="none" stroke="#1c1d1f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="282" y="204" width="24" height="66" rx="10" fill="#1c1d1f"/>
-          </svg>
+          <img src="img/logo-emblem-480.png" width="480" height="454" alt="Товарный знак «Честный ремонт»: дом и щит с галочкой" fetchpriority="high">
         </div>
       </div>
     </section>
@@ -423,56 +424,56 @@
         <div class="cards cards-4">
           <article class="card">
             <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg>
             </div>
             <h3>Онлайн-камеры на объекте</h3>
             <p>Ставим автономные камеры: в любое время можно посмотреть, как идёт ремонт.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h9l4 4v15H6z"/><path d="M14.5 2.5v4.5H19"/><path d="M9 12h7M9 16h5"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h9l4 4v15H6z"/><path d="M14.5 2.5v4.5H19"/><path d="M9 12h7M9 16h5"/></svg>
             </div>
             <h3>Бесплатный замер и смета</h3>
             <p>Руководитель бригады сам приезжает на замер и составляет подробную смету.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/></svg>
             </div>
             <h3>Выходим за 3 дня</h3>
             <p>В бригаде больше 20 человек, поэтому начинаем не позже чем через 3 календарных дня после договора.</p>
           </article>
           <article class="card card-accent">
             <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
             </div>
             <h3>Гарантия 3 года</h3>
             <p>На все виды работ. На материалы действует гарантия производителя.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
             </div>
             <h3>Черновые материалы — на нас</h3>
             <p>Сами закажем всё нужное. Не придётся бегать по магазинам и разбираться в видах шпаклёвки.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.5l-7 7-10-10V3.5h7z"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M10.5 15.5l5-5"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.5l-7 7-10-10V3.5h7z"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M10.5 15.5l5-5"/></svg>
             </div>
             <h3>Скидка до 20% на материалы</h3>
             <p>В «Петровиче». А обученный ИИ-ассистент поможет заранее прикинуть расходы на материалы.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.3-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5c2.4.2 4 1.9 4.5 4.5"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.3-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5c2.4.2 4 1.9 4.5 4.5"/></svg>
             </div>
             <h3>Подрядчики по всем направлениям</h3>
             <p>Остекление, кондиционеры, кухни и мебель, двери, умный дом, шумоизоляция и другое.</p>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/><path d="M6.5 15h4"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/><path d="M6.5 15h4"/></svg>
             </div>
             <h3>Прозрачные цены</h3>
             <p>В смете каждый этап расписан отдельно. Платить можно наличными или безналичным расчётом.</p>
@@ -521,11 +522,11 @@
         <div>
           <ul class="chips" aria-label="Регионы">
             <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d9a300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#146fb0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
               Санкт-Петербург
             </li>
             <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d9a300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#146fb0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
               Ленинградская область
             </li>
           </ul>
@@ -676,19 +677,19 @@
           <ul class="platforms">
             <li>
               <span class="platform-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5L2.5 11l7 2.5 2.5 7 9.5-17z"/><path d="M9.5 13.5l12-10"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5L2.5 11l7 2.5 2.5 7 9.5-17z"/><path d="M9.5 13.5l12-10"/></svg>
               </span>
               <div><strong>Telegram</strong><p>Пишите по любому из номеров выше.</p></div>
             </li>
             <li>
               <span class="platform-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg>
               </span>
               <div><strong>MAX</strong><p>Те же номера, отвечаем в мессенджере.</p></div>
             </li>
             <li>
               <span class="platform-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1c1d1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M7 5l1.5-2h7L17 5"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M7 5l1.5-2h7L17 5"/></svg>
               </span>
               <div><strong>Фото и видео работ</strong><p>Пришлём примеры «до/после», покажем текущий объект или запись с онлайн-камеры.</p></div>
             </li>
@@ -700,7 +701,10 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>© 2026 «Честный ремонт» — ремонтная бригада по доступным ценам · Санкт-Петербург и Ленинградская область</span>
+      <span class="footer-brand">
+        <img src="img/logo-emblem-160.png" width="160" height="151" alt="" loading="lazy">
+        <span>© 2026 «Честный ремонт» — ремонтная бригада по доступным ценам · Санкт-Петербург и Ленинградская область</span>
+      </span>
       <a href="#top">Наверх ↑</a>
     </div>
   </footer>
