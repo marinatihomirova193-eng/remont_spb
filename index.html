@@ -428,6 +428,11 @@
     }
     .platforms li:first-child { padding-top: 4px; }
     .platforms li:last-child { border-bottom: 0; }
+    /* Ссылки на ботов: вся строка кликабельна */
+    .platform-link { display: flex; gap: 16px; align-items: flex-start; flex: 1; color: inherit; text-decoration: none; border-radius: 10px; }
+    .platform-go { display: inline-block; margin-left: 4px; color: var(--sky); transition: transform .15s ease; }
+    .platform-link:hover strong { color: var(--sky); }
+    .platform-link:hover .platform-go { transform: translate(2px, -2px); }
     .platform-icon {
       flex: none; width: 48px; height: 48px; border-radius: 50%;
       background: var(--grad-icon); display: grid; place-items: center; box-shadow: 0 6px 16px rgba(2, 18, 36, .35);
@@ -872,16 +877,20 @@
           <h2>Где нас найти</h2>
           <ul class="platforms">
             <li>
-              <span class="platform-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5L2.5 11l7 2.5 2.5 7 9.5-17z"/><path d="M9.5 13.5l12-10"/></svg>
-              </span>
-              <div><strong>Telegram</strong><p>Пишите по любому из номеров выше.</p></div>
+              <a class="platform-link" href="https://t.me/SmetaDarom_Bot" target="_blank" rel="noopener">
+                <span class="platform-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5L2.5 11l7 2.5 2.5 7 9.5-17z"/><path d="M9.5 13.5l12-10"/></svg>
+                </span>
+                <div><strong>Telegram-бот <span class="platform-go" aria-hidden="true">↗</span></strong><p>Напишите боту @SmetaDarom_Bot. Или пишите по номерам выше.</p></div>
+              </a>
             </li>
             <li>
-              <span class="platform-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg>
-              </span>
-              <div><strong>MAX</strong><p>Те же номера, отвечаем в мессенджере.</p></div>
+              <a class="platform-link" href="https://max.ru/id772498824211_1_bot" target="_blank" rel="noopener">
+                <span class="platform-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg>
+                </span>
+                <div><strong>Бот в MAX <span class="platform-go" aria-hidden="true">↗</span></strong><p>Напишите боту «Честный ремонт Расчёт». Или пишите по номерам выше.</p></div>
+              </a>
             </li>
             <li>
               <span class="platform-icon" aria-hidden="true">

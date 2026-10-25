@@ -65,6 +65,8 @@ Word и Python здесь не установлены. Текст из docx чи
 Add-Type -AssemblyName System.IO.Compression; $fs = [IO.File]::Open((Resolve-Path 'База Знаний Ремонтная бригада.docx').Path, 'Open', 'Read', 'ReadWrite'); $z = New-Object IO.Compression.ZipArchive($fs, 'Read'); $r = New-Object IO.StreamReader($z.GetEntry('word/document.xml').Open(), [Text.Encoding]::UTF8); $x = $r.ReadToEnd(); $r.Close(); $z.Dispose(); $fs.Close(); [Net.WebUtility]::HtmlDecode(($x -replace '</w:p>', "`n" -replace '<[^>]+>', '')) -split "`n" | Where-Object { $_.Trim() }
 ```
 
+Боты (ссылки дал пользователь, стоят в «Контактах» → «Где нас найти», открываются в новой вкладке): Telegram — https://t.me/SmetaDarom_Bot (@SmetaDarom_Bot), MAX — https://max.ru/id772498824211_1_bot (бот «Честный ремонт Расчёт»). Что именно умеют боты, в источниках не описано — не придумывать.
+
 Пока нет в источниках и потому нет на сайте: почта (в docx поле пустое), ссылки на площадки (Авито, соцсети и т. п.), отзывы.
 
 Файлы базы знаний — не часть сайта: они в `.gitignore` и в публичный репозиторий не попадают. Выкладывать их только по прямой просьбе пользователя. Фото и видео работ есть у пользователя в папке «Фото ремонты» (в основном видео .MOV/.mp4 и .HEIC, их нужно конвертировать для веба). Подпапки названы по клиентам — имена клиентов на сайт не выносить.
