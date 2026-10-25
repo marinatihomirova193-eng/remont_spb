@@ -389,7 +389,10 @@
     .terms-note { margin: 24px 0 0; color: var(--muted); }
 
     /* ===== Контакты ===== */
-    .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contacts-grid {
+      display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px;
+      grid-template-areas: "signup write" "call works";
+    }
     /* Два бесплатных предложения — компактные полупрозрачные плашки */
     .offers { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 10px; }
     /* Без плашек: в «Контактах» плашками выделены только телефоны */
@@ -428,14 +431,17 @@
     }
     .platforms li:first-child { padding-top: 4px; }
     .platforms li:last-child { border-bottom: 0; }
-    /* «Хотите посмотреть наши работы?» — отдельно от ботов: отступ и разделитель с синей чертой */
-    .works-note {
-      position: relative; display: flex; gap: 16px; align-items: flex-start;
-      margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(127, 195, 240, .22);
-    }
-    .works-note::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
-    .works-note h3 { font-size: 1.05rem; margin-bottom: .35em; }
-    .works-note p { margin: 0; color: var(--muted-dark); font-size: .95rem; }
+    /* Четыре обособленных подблока: «Запишитесь», «Позвоните», «Напишите нам», «Наши работы» —
+       у каждого своя метка и заголовок; нижний ряд отделён линией с синей чертой */
+    .contact-block { position: relative; min-width: 0; }
+    .contact-block .lead-dark { margin-bottom: 20px; }
+    .contact-block .offers + .lead-dark { margin: 0; }
+    .cb-signup { grid-area: signup; }
+    .cb-call { grid-area: call; }
+    .cb-write { grid-area: write; }
+    .cb-works { grid-area: works; }
+    .cb-call, .cb-works { margin-top: 44px; padding-top: 40px; border-top: 1px solid rgba(127, 195, 240, .22); }
+    .cb-call::before, .cb-works::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
     /* Ссылки на ботов: вся строка кликабельна */
     .platform-link { display: flex; gap: 16px; align-items: flex-start; flex: 1; color: inherit; text-decoration: none; border-radius: 10px; }
     .platform-go { display: inline-block; margin-left: 4px; color: var(--sky); transition: transform .15s ease; }
@@ -487,6 +493,10 @@
       .logo { max-width: 240px; }
       .hero { padding: 44px 0 64px; }
       .hero-grid, .regions-grid, .about-grid, .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
+      /* На телефоне: записаться → позвонить → написать → работы, каждый блок отделён линией */
+      .contacts-grid { grid-template-areas: "signup" "call" "write" "works"; gap: 0; }
+      .cb-call, .cb-write, .cb-works { margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(127, 195, 240, .22); }
+      .cb-write::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
       .hero-art img { max-width: 260px; }
       .hero-tagline { font-size: .72rem; letter-spacing: .1em; gap: 10px; }
       .hero-tagline::before, .hero-tagline::after { width: 18px; }
@@ -854,7 +864,7 @@
     <!-- Контакты и площадки -->
     <section class="section section-dark" id="kontakty" aria-labelledby="contacts-title">
       <div class="container contacts-grid">
-        <div>
+        <div class="contact-block cb-signup">
           <span class="eyebrow">Контакты</span>
           <h2 id="contacts-title">Запишитесь бесплатно</h2>
           <ul class="offers">
@@ -867,7 +877,11 @@
               <span><strong>Смета по дизайн-проекту</strong>рассчитаем удалённо</span>
             </li>
           </ul>
-          <p class="lead-dark">Позвоните — договоримся о времени и ответим на вопросы.</p>
+        </div>
+        <div class="contact-block cb-call">
+          <span class="eyebrow">Телефоны</span>
+          <h2>Позвоните</h2>
+          <p class="lead-dark">Договоримся о времени и ответим на вопросы.</p>
           <div class="phones">
             <a class="phone-card" href="tel:+79522033777">
               <span class="phone-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h3.5l2 5-2.5 1.5a11 11 0 0 0 6 6l1.5-2.5 5 2V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-1.5z"/></svg></span>
@@ -880,7 +894,7 @@
           </div>
           <p class="contact-hours"><span>Время работы</span>08:30–20:00, кроме воскресенья</p>
         </div>
-        <div>
+        <div class="contact-block cb-write">
           <span class="eyebrow">Мессенджеры</span>
           <h2>Напишите нам</h2>
           <ul class="platforms">
@@ -889,7 +903,7 @@
                 <span class="platform-icon" aria-hidden="true">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5L2.5 11l7 2.5 2.5 7 9.5-17z"/><path d="M9.5 13.5l12-10"/></svg>
                 </span>
-                <div><strong>Telegram-бот <span class="platform-go" aria-hidden="true">↗</span></strong><p>Напишите боту @SmetaDarom_Bot. Или пишите по номерам выше.</p></div>
+                <div><strong>Telegram-бот <span class="platform-go" aria-hidden="true">↗</span></strong><p>Напишите боту @SmetaDarom_Bot. Или пишите на наши номера телефонов.</p></div>
               </a>
             </li>
             <li>
@@ -897,19 +911,25 @@
                 <span class="platform-icon" aria-hidden="true">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg>
                 </span>
-                <div><strong>Бот в MAX <span class="platform-go" aria-hidden="true">↗</span></strong><p>Напишите боту «Честный ремонт Расчёт». Или пишите по номерам выше.</p></div>
+                <div><strong>Бот в MAX <span class="platform-go" aria-hidden="true">↗</span></strong><p>Напишите боту «Честный ремонт Расчёт». Или пишите на наши номера телефонов.</p></div>
               </a>
             </li>
           </ul>
-          <div class="works-note">
-            <span class="platform-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M7 5l1.5-2h7L17 5"/></svg>
-            </span>
-            <div>
-              <h3>Хотите посмотреть наши работы?</h3>
-              <p>Пришлём фото и видео «до/после», покажем текущий объект или запись с онлайн-камеры. Просто попросите в мессенджере или по телефону.</p>
-            </div>
-          </div>
+        </div>
+        <div class="contact-block cb-works">
+          <span class="eyebrow">Наши работы</span>
+          <h2>Хотите посмотреть наши работы?</h2>
+          <ul class="offers">
+            <li>
+              <span class="offer-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M7 5l1.5-2h7L17 5"/></svg></span>
+              <span><strong>Фото и видео «до/после»</strong>пришлём по запросу</span>
+            </li>
+            <li>
+              <span class="offer-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></span>
+              <span><strong>Текущий объект</strong>покажем вживую или запись с онлайн-камеры</span>
+            </li>
+          </ul>
+          <p class="lead-dark">Просто попросите в мессенджере или по телефону.</p>
         </div>
       </div>
     </section>
