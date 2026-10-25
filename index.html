@@ -420,7 +420,7 @@
     .phone-card strong { display: block; font-family: var(--font-head); font-size: clamp(1.1rem, 2.4vw, 1.4rem); letter-spacing: .01em; }
     .contact-hours { margin: 0; color: var(--paper); font-weight: 700; }
     .contact-hours span { display: block; font-size: .85rem; font-weight: 400; color: var(--muted-dark); }
-    /* «Где нас найти» — простой список с тонкими разделителями, без плашек */
+    /* «Напишите нам» — боты в Telegram и MAX простым списком с тонкими разделителями, без плашек */
     .platforms { display: grid; list-style: none; margin: 0; padding: 0; }
     .platforms li {
       display: flex; gap: 16px; align-items: flex-start;
@@ -428,6 +428,14 @@
     }
     .platforms li:first-child { padding-top: 4px; }
     .platforms li:last-child { border-bottom: 0; }
+    /* «Хотите посмотреть наши работы?» — отдельно от ботов: отступ и разделитель с синей чертой */
+    .works-note {
+      position: relative; display: flex; gap: 16px; align-items: flex-start;
+      margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(127, 195, 240, .22);
+    }
+    .works-note::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
+    .works-note h3 { font-size: 1.05rem; margin-bottom: .35em; }
+    .works-note p { margin: 0; color: var(--muted-dark); font-size: .95rem; }
     /* Ссылки на ботов: вся строка кликабельна */
     .platform-link { display: flex; gap: 16px; align-items: flex-start; flex: 1; color: inherit; text-decoration: none; border-radius: 10px; }
     .platform-go { display: inline-block; margin-left: 4px; color: var(--sky); transition: transform .15s ease; }
@@ -873,8 +881,8 @@
           <p class="contact-hours"><span>Время работы</span>08:30–20:00, кроме воскресенья</p>
         </div>
         <div>
-          <span class="eyebrow">Площадки</span>
-          <h2>Где нас найти</h2>
+          <span class="eyebrow">Мессенджеры</span>
+          <h2>Напишите нам</h2>
           <ul class="platforms">
             <li>
               <a class="platform-link" href="https://t.me/SmetaDarom_Bot" target="_blank" rel="noopener">
@@ -892,13 +900,16 @@
                 <div><strong>Бот в MAX <span class="platform-go" aria-hidden="true">↗</span></strong><p>Напишите боту «Честный ремонт Расчёт». Или пишите по номерам выше.</p></div>
               </a>
             </li>
-            <li>
-              <span class="platform-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M7 5l1.5-2h7L17 5"/></svg>
-              </span>
-              <div><strong>Фото и видео работ</strong><p>Пришлём примеры «до/после», покажем текущий объект или запись с онлайн-камеры.</p></div>
-            </li>
           </ul>
+          <div class="works-note">
+            <span class="platform-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#083762" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M7 5l1.5-2h7L17 5"/></svg>
+            </span>
+            <div>
+              <h3>Хотите посмотреть наши работы?</h3>
+              <p>Пришлём фото и видео «до/после», покажем текущий объект или запись с онлайн-камеры. Просто попросите в мессенджере или по телефону.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
