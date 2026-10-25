@@ -438,7 +438,8 @@
     .contact-block .offers + .lead-dark { margin: 0; }
     .cb-signup { grid-area: signup; }
     .cb-call { grid-area: call; }
-    /* Все кнопки «Записаться», «Рассчитать смету», «Связаться» и пункт «Контакты» ведут сюда — сразу к телефонам и ботам */
+    /* Все кнопки «Записаться», «Рассчитать смету», «Связаться» и пункт «Контакты» ведут на «Напишите» —
+       на телефоне это первый блок связи (боты, потом телефоны), на компьютере он в одном ряду с «Позвоните» */
     #svyaz { scroll-margin-top: 92px; }
     .cb-write { grid-area: write; }
     .cb-works { grid-area: works; }
@@ -495,8 +496,8 @@
       .logo { max-width: 240px; }
       .hero { padding: 44px 0 64px; }
       .hero-grid, .regions-grid, .about-grid, .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
-      /* На телефоне: записаться → позвонить → написать → работы, каждый блок отделён линией */
-      .contacts-grid { grid-template-areas: "signup" "call" "write" "works"; gap: 0; }
+      /* На телефоне: записаться → написать → позвонить → работы, каждый блок отделён линией */
+      .contacts-grid { grid-template-areas: "signup" "write" "call" "works"; gap: 0; }
       .cb-call, .cb-write, .cb-works { margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(127, 195, 240, .22); }
       .cb-works::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
 
@@ -881,7 +882,7 @@
             </li>
           </ul>
         </div>
-        <div class="contact-block cb-call" id="svyaz">
+        <div class="contact-block cb-call">
           <span class="eyebrow">Телефоны</span>
           <h2>Позвоните</h2>
           <p class="lead-dark">Договоримся о времени и ответим на вопросы.</p>
@@ -897,7 +898,7 @@
           </div>
           <p class="contact-hours"><span>Время работы</span>08:30–20:00, кроме воскресенья</p>
         </div>
-        <div class="contact-block cb-write">
+        <div class="contact-block cb-write" id="svyaz">
           <span class="eyebrow">Мессенджеры</span>
           <h2>Напишите</h2>
           <ul class="platforms">
