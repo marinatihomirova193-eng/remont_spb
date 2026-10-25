@@ -438,6 +438,8 @@
     .contact-block .offers + .lead-dark { margin: 0; }
     .cb-signup { grid-area: signup; }
     .cb-call { grid-area: call; }
+    /* Все кнопки «Записаться», «Рассчитать смету», «Связаться» и пункт «Контакты» ведут сюда — сразу к телефонам и ботам */
+    #svyaz { scroll-margin-top: 92px; }
     .cb-write { grid-area: write; }
     .cb-works { grid-area: works; }
     .cb-call, .cb-write { margin-top: 44px; padding-top: 40px; border-top: 1px solid rgba(127, 195, 240, .22); }
@@ -558,10 +560,10 @@
           <li><a href="#o-nas">О нас</a></li>
           <li><a href="#ceny">Цены</a></li>
           <li><a href="#usloviya">Условия</a></li>
-          <li><a href="#kontakty">Контакты</a></li>
+          <li><a href="#svyaz" data-spy="#kontakty">Контакты</a></li>
         </ul>
       </nav>
-      <a class="btn header-cta" href="#kontakty">
+      <a class="btn header-cta" href="#svyaz">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h3.5l2 5-2.5 1.5a11 11 0 0 0 6 6l1.5-2.5 5 2V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-1.5z"/></svg>
         Связаться
       </a>
@@ -577,8 +579,8 @@
           <h1 id="hero-title">Качественный ремонт квартир и домов <span>без&nbsp;переплат</span></h1>
           <p class="hero-lead">Ремонт под ключ или отдельные работы по договорённости. Бесплатный замер, подробная смета от бригадира и гарантия 3&nbsp;года на все виды работ.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#kontakty">Записаться на бесплатный замер</a>
-            <a class="btn btn-light" href="#kontakty">Рассчитать смету по дизайн-проекту</a>
+            <a class="btn btn-primary" href="#svyaz">Записаться на бесплатный замер</a>
+            <a class="btn btn-light" href="#svyaz">Рассчитать смету по дизайн-проекту</a>
           </div>
           <ul class="hero-stats" aria-label="Коротко об условиях">
             <li><strong>от 15&nbsp;000&nbsp;₽</strong><span>за м²</span></li>
@@ -773,8 +775,8 @@
             <p>Итоговая цена зависит от сложности работ. Дополнительные работы — только по согласованию с Вами. При большом объёме или комплексном ремонте — скидки.</p>
           </div>
           <div class="price-actions">
-            <a class="btn btn-primary" href="#kontakty">Рассчитать смету бесплатно</a>
-            <a class="btn btn-light" href="#kontakty">Рассчитать смету по дизайн-проекту</a>
+            <a class="btn btn-primary" href="#svyaz">Рассчитать смету бесплатно</a>
+            <a class="btn btn-light" href="#svyaz">Рассчитать смету по дизайн-проекту</a>
           </div>
         </div>
         <div class="cards price-cards">
@@ -879,7 +881,7 @@
             </li>
           </ul>
         </div>
-        <div class="contact-block cb-call">
+        <div class="contact-block cb-call" id="svyaz">
           <span class="eyebrow">Телефоны</span>
           <h2>Позвоните</h2>
           <p class="lead-dark">Договоримся о времени и ответим на вопросы.</p>
@@ -951,7 +953,8 @@
     (function () {
       var items = [];
       document.querySelectorAll('.nav a[href^="#"]').forEach(function (link) {
-        var section = document.querySelector(link.getAttribute('href'));
+        // data-spy: какой блок отслеживать для подсветки, если ссылка ведёт внутрь раздела
+        var section = document.querySelector(link.dataset.spy || link.getAttribute('href'));
         if (section) items.push({ link: link, section: section });
       });
       if (!items.length) return;
