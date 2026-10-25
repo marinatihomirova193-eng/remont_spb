@@ -391,7 +391,7 @@
     /* ===== Контакты ===== */
     .contacts-grid {
       display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px;
-      grid-template-areas: "signup write" "call works";
+      grid-template-areas: "signup works" "call write";
     }
     /* Два бесплатных предложения — компактные полупрозрачные плашки */
     .offers { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 10px; }
@@ -431,7 +431,7 @@
     }
     .platforms li:first-child { padding-top: 4px; }
     .platforms li:last-child { border-bottom: 0; }
-    /* Четыре обособленных подблока: «Запишитесь», «Позвоните», «Напишите нам», «Наши работы» —
+    /* Четыре обособленных подблока: «Запишитесь», «Посмотреть работы?», «Позвоните», «Напишите» —
        у каждого своя метка и заголовок; нижний ряд отделён линией с синей чертой */
     .contact-block { position: relative; min-width: 0; }
     .contact-block .lead-dark { margin-bottom: 20px; }
@@ -440,8 +440,8 @@
     .cb-call { grid-area: call; }
     .cb-write { grid-area: write; }
     .cb-works { grid-area: works; }
-    .cb-call, .cb-works { margin-top: 44px; padding-top: 40px; border-top: 1px solid rgba(127, 195, 240, .22); }
-    .cb-call::before, .cb-works::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
+    .cb-call, .cb-write { margin-top: 44px; padding-top: 40px; border-top: 1px solid rgba(127, 195, 240, .22); }
+    .cb-call::before, .cb-write::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
     /* Ссылки на ботов: вся строка кликабельна */
     .platform-link { display: flex; gap: 16px; align-items: flex-start; flex: 1; color: inherit; text-decoration: none; border-radius: 10px; }
     .platform-go { display: inline-block; margin-left: 4px; color: var(--sky); transition: transform .15s ease; }
@@ -496,7 +496,8 @@
       /* На телефоне: записаться → позвонить → написать → работы, каждый блок отделён линией */
       .contacts-grid { grid-template-areas: "signup" "call" "write" "works"; gap: 0; }
       .cb-call, .cb-write, .cb-works { margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(127, 195, 240, .22); }
-      .cb-write::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
+      .cb-works::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
+
       .hero-art img { max-width: 260px; }
       .hero-tagline { font-size: .72rem; letter-spacing: .1em; gap: 10px; }
       .hero-tagline::before, .hero-tagline::after { width: 18px; }
@@ -896,7 +897,7 @@
         </div>
         <div class="contact-block cb-write">
           <span class="eyebrow">Мессенджеры</span>
-          <h2>Напишите нам</h2>
+          <h2>Напишите</h2>
           <ul class="platforms">
             <li>
               <a class="platform-link" href="https://t.me/SmetaDarom_Bot" target="_blank" rel="noopener">
@@ -918,7 +919,7 @@
         </div>
         <div class="contact-block cb-works">
           <span class="eyebrow">Наши работы</span>
-          <h2>Хотите посмотреть наши работы?</h2>
+          <h2>Посмотреть работы?</h2>
           <ul class="offers">
             <li>
               <span class="offer-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M7 5l1.5-2h7L17 5"/></svg></span>
