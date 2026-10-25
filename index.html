@@ -438,9 +438,10 @@
     .contact-block .offers + .lead-dark { margin: 0; }
     .cb-signup { grid-area: signup; }
     .cb-call { grid-area: call; }
-    /* Все кнопки «Записаться», «Рассчитать смету», «Связаться» и пункт «Контакты» ведут на «Напишите» —
-       на телефоне это первый блок связи (боты, потом телефоны), на компьютере он слева в одном ряду с «Позвоните» */
-    #svyaz { scroll-margin-top: 92px; }
+    /* Метка #svyaz: на неё ведут кнопки «Записаться», «Рассчитать смету», «Связаться» и пункт «Контакты».
+       На компьютере она в начале раздела (видно «Запишитесь бесплатно»), на телефоне — перед «Напишите» (см. адаптив) */
+    #kontakty { position: relative; }
+    .contacts-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; scroll-margin-top: 84px; }
     .cb-write { grid-area: write; }
     .cb-works { grid-area: works; }
     .cb-call, .cb-write { margin-top: 44px; padding-top: 40px; border-top: 1px solid rgba(127, 195, 240, .22); }
@@ -498,6 +499,8 @@
       .hero-grid, .regions-grid, .about-grid, .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
       /* На телефоне: записаться → написать → позвонить → работы, каждый блок отделён линией */
       .contacts-grid { grid-template-areas: "signup" "write" "call" "works"; gap: 0; }
+      /* на телефоне метка встаёт в ячейку «Напишите»: кнопки ведут сразу к ботам и телефонам */
+      .contacts-anchor { position: static; grid-area: write; align-self: start; width: auto; height: 0; scroll-margin-top: 56px; }
       .cb-call, .cb-write, .cb-works { margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(127, 195, 240, .22); }
       .cb-works::before { content: ""; position: absolute; top: -2px; left: 0; width: 52px; height: 3px; border-radius: 2px; background: var(--brand-line); }
 
@@ -868,6 +871,7 @@
     <!-- Контакты и площадки -->
     <section class="section section-dark" id="kontakty" aria-labelledby="contacts-title">
       <div class="container contacts-grid">
+        <span id="svyaz" class="contacts-anchor" aria-hidden="true"></span>
         <div class="contact-block cb-signup">
           <span class="eyebrow">Контакты</span>
           <h2 id="contacts-title">Запишитесь бесплатно</h2>
@@ -898,7 +902,7 @@
           </div>
           <p class="contact-hours"><span>Время работы</span>08:30–20:00, кроме воскресенья</p>
         </div>
-        <div class="contact-block cb-write" id="svyaz">
+        <div class="contact-block cb-write">
           <span class="eyebrow">Мессенджеры</span>
           <h2>Напишите</h2>
           <ul class="platforms">
