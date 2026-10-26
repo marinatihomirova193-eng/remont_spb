@@ -2,5 +2,6 @@
 *.docx
 FAQ*.txt
 Tone-of-Voice*.txt
+Системный промт*.txt
 ~$*
 .~lock.*
